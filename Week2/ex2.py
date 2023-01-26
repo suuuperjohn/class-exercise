@@ -6,6 +6,7 @@ Take a look at the csv file and execute the following python code.
 
   
 # import required libraries to your workspace
+pip install pandas
 
 import pandas as pd
 
