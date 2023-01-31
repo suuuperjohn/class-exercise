@@ -54,3 +54,13 @@ with open('john.json') as f:
 
 with open('john.json', 'w') as f:
   json.dump(my_dict, f, indent=4)
+
+
+import requests
+
+# replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
+url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&apikey=79VVQG15PJNZNHOV'
+r = requests.get(url)
+data = r.json()
+
+print(data)
