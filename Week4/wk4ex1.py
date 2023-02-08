@@ -18,4 +18,4 @@ df = df.loc[:,['pclass', 'survived','age', 'sex','embarked']]
 df.isna().sum()
 df.age.fillna(df.age.median(), inplace=True)
 df = df.loc[df.embarked.notna(), :]
-
+1111
