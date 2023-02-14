@@ -18,4 +18,9 @@ df = df.loc[:,['pclass', 'survived','age', 'sex','embarked']]
 df.isna().sum()
 df.age.fillna(df.age.median(), inplace=True)
 df = df.loc[df.embarked.notna(), :]
-1111
+
+
+
+calculate_bonus = lambda sales:sales*0.02 if sales > 50000 else sales*0.01
+print(calculate_bonus(sales=600))
+print(calculate_bonus(600))
