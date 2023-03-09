@@ -60,5 +60,8 @@ if st.button("Predict"):
         sentiment = pipeline.predict([review_text])
         st.write("Predicted sentimentis:",sentiment)
 
+st.subheader("Titanic Model Testing Form Example")
 pclass=st.selectbox("pclass", options=["1", "2", "3"])
 age = st.text_input("age")
+if st.button("Predict Survival"):
+    st.write("model predicts")
