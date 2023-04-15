@@ -14,6 +14,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 
 nltk.download('wordnet')
+nltk.download('punkt')
 
 def preprocess_text(text):
     # Lowercase the text
@@ -36,8 +37,8 @@ def preprocess_text(text):
 
 # Apply preprocessing to the text columns
 data['benefits_review'] = data['benefits_review'].apply(preprocess_text)
-data['side_effects'] = data['side_effects'].apply(preprocess_text)
-data['overall_comment'] = data['overall_comment'].apply(preprocess_text)
+data['side_effects_review'] = data['side_effects_review'].apply(preprocess_text)
+data['comments_review'] = data['comments_review'].apply(preprocess_text)
 
 from sklearn.feature_extraction.text import CountVectorizer
 
