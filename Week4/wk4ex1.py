@@ -10,7 +10,7 @@ df.dtypes
 
 df.nunique
 
-df.corr(data)['survived']
+df.corr(df)['survived']
 
 
 df.corr()['survivied'].sort_values(ascending=False)
@@ -75,63 +75,4 @@ df = pd.read_csv("titanic_raw.csv")
 X = df.drop("survived", axis='columns')
 y = df["survived"]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, stratify=y)
-
-df.dtypes
-num_pipeline = Pipeline([
-('imputer', SimpleImputer(strategy='median')),
-('std_scaler', StandardScaler()),
-])
-
-column_transformer = ColumnTransformer([
-('num', num_pipeline, ['pclass', 'age']),
-('cat', OneHotEncoder(), ['sex', 'embarked'])
-])
-
-pipeline = Pipeline([
-('ct', column_transformer),
-('clf', LogisticRegression())
-])
-pipeline.fit(X_train, y_train)
-
-
-sample_passengers = X_test[:10]
-y_pred = pipeline.predict(sample_passengers)
-y_true = y_test[:10]
-
-conf_mat = confusion_matrix(y_true, y_pred)
-sns.heatmap(conf_mat, annot=True, fmt='d', cmap='Blues', cbar=False)
-plt.xlabel("Predicted")
-plt.ylabel("True")
-plt.show()
-
-#Part 3
-import pandas as pd
-import joblib
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-data = pd.read_csv("titanic_2.csv")
-
-# Load the saved pipeline and model
-pipe = joblib.load("titanic_pipeline.pkl")
-
-# Select 10 sample passengers
-samples = data.sample(10)
-
-# Predict the target values for the sample data
-y_pred = pipe.predict(samples.drop("Survived", axis=1))
-
-# Create a dataframe to show the actual vs predicted values
-results = pd.DataFrame({
-    "PassengerId": samples["PassengerId"],
-    "Actual": samples["Survived"],
-    "Predicted": y_pred
-})
-
-# Plot the confusion matrix
-cm = confusion_matrix(results["Actual"], results["Predicted"])
-sns.heatmap(cm, annot=True, fmt="d")
-plt.xlabel("Predicted")
-plt.ylabel("True")
-plt.show()
 
