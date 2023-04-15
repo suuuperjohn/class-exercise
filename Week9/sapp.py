@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
@@ -71,6 +70,7 @@ y_pred = model.predict(X_test_vec)
 y_pred_labels = label_encoder.inverse_transform(y_pred)
 
 plot_confusion_matrix(y_test, y_pred_labels)
+#Provide a summary of the model performance evaluation process and the best performing model.
 st.markdown("""
 Classification Report:
 """)
@@ -140,3 +140,5 @@ if st.button("Analyze Sentiment"):
         st.markdown(f"**Predicted sentiment:** {input_pred_label.capitalize()}")
     else:
         st.warning("Please enter a drug review to analyze.")
+
+
