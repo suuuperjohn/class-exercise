@@ -10,3 +10,4 @@ seaborn
 matplotlib
 scikit-learn
 wordcloud
+xgboost
