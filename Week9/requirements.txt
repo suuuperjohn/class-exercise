@@ -3,3 +3,10 @@ fsspec
 gcsfs
 matplotlib
 seaborn
+streamlit
+pandas
+numpy
+seaborn
+matplotlib
+scikit-learn
+wordcloud
